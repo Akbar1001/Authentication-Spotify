@@ -1,5 +1,5 @@
 const musicModel=require("../models/music.model")
-const jwt=require("jsonwebtoken")
+const jwt=require('jsonwebtoken')
 const {uploadFile}=require("../services/storage.service")
 
 async function createMusic(req,res) {
@@ -13,7 +13,7 @@ async function createMusic(req,res) {
 
         const decoded=jwt.verify(token,process.env.JWT_SECRET);
 
-        if(decoded.role !== "Artist")
+        if(decoded.role !== "artist")
             return res.status(403).json({message : "You don't have access to this feature"})
 
     
