@@ -10,7 +10,8 @@ const upload=multer({
 
 router.post("/upload",authMiddleware.authartist,upload.single("music"),MusicController.createMusic);
 router.post("/album",authMiddleware.authartist,MusicController.createAlbum); 
-
+router.get("/",authMiddleware.authUser,MusicController.getAllMusics);
+router.get("/",authMiddleware.authUser,MusicController.getAllAlbums);
 
 
 module.exports=router;

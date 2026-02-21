@@ -51,4 +51,22 @@ async function createAlbum(req,res){
         }
     })
 }
-module.exports={createMusic}
+
+async function getAllMusics(req,res){
+    
+    const musics= await musicModel.find().skip(2).limit(15)
+    res.status(201).json({message:"All Musics fetched successfully",
+        musics:musics,
+    })
+}
+
+async function getAllAlbums(req,res){
+
+    const albums=await albumModel.find().skip(2).limit(10)
+    res.status(201).json({
+        message:"All Albums fetched successfully",
+        albums:albums,
+    })
+}
+
+module.exports={createMusic,createAlbum,getAllMusics,getAllAlbums}
